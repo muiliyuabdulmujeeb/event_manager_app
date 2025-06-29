@@ -1,3 +1,4 @@
+from fastapi import HTTPException, status
 import uuid
 from database import users
 from models import User as UserModel
@@ -8,16 +9,16 @@ class UserLogic:
     @staticmethod
     def create_user(user_details: UserCreate):
        user_id = str(uuid.uuid4())
-       user = UserModel(id = user_id, **user_details.model_dump())
-       users.append(user)
-       return user
+       user_data = UserModel(id = user_id, **user_details.model_dump())
+       users.append(user_data)
+       return user_data
     
     @staticmethod
     def get_user_by_id(user_id: str):
         for user in users:
             if user.id == user_id:
                 return user
-        return {"error": "User not found"}
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
     
     @staticmethod
     def get_all_users():
@@ -30,7 +31,7 @@ class UserLogic:
                 user.name = to_update.name
                 user.email = to_update.email
                 return user
-        return {"error": "User not found"}
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
 
     @staticmethod
     def deactivate_user(to_deactivate: UserDeactivate):
@@ -38,15 +39,15 @@ class UserLogic:
             if user.id == to_deactivate.id:
                 user.is_active = False
                 return {"Message": "User deactivated"}
-        return {"error": "User not found"}    
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")    
 
     @staticmethod
     def activate_user(to_activate: UserActivate):
         for user in users:
             if user.id == to_activate.id:
                 user.is_active = True
-                return {"Message": "User deactivated"}
-        return {"error": "User not found"}    
+                return {"Message": "User activated"}
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")    
 
     @staticmethod
     def delete_user(user_id: str):
@@ -54,7 +55,7 @@ class UserLogic:
             if user.id == user_id:
                 users.remove(user)
                 return {"Message": "User deleted"}
-        return {"error": "User not found"}
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
         
     
 
