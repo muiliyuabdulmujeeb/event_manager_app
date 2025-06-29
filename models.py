@@ -6,16 +6,14 @@ class User:
         self.is_active = is_active
 
 class Speaker:
-    def __init__(self, id: str, name: str, topic: str, is_active: bool = True):
+    def __init__(self, id: str, name: str, topic: str):
         self.id = id
         self.name = name
         self.topic = topic
-        self.is_active = is_active
 
 class Event:
-    def __init__(self, id: str, speaker_id: str, title: str, location: str, date: str, is_open: bool = True):
+    def __init__(self, id: str, title: str, location: str, date: str, is_open: bool = True):
         self.id = id
-        self.speaker_id = speaker_id
         self.title = title
         self.location = location
         self.date = date
