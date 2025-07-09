@@ -2,7 +2,7 @@ from fastapi import HTTPException, status
 import uuid
 from database import users
 from models import User as UserModel
-from schemas.user import UserCreate, UserBase, UserUpdate, UserActivate, UserDeactivate
+from schemas.user import UserCreate, UserUpdate
 
 class UserLogic:
     
@@ -34,17 +34,17 @@ class UserLogic:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
 
     @staticmethod
-    def deactivate_user(to_deactivate: UserDeactivate):
+    def deactivate_user(user_id: str):
         for user in users:
-            if user.id == to_deactivate.id:
+            if user.id == user_id:
                 user.is_active = False
                 return {"Message": "User deactivated"}
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")    
 
     @staticmethod
-    def activate_user(to_activate: UserActivate):
+    def activate_user(user_id: str):
         for user in users:
-            if user.id == to_activate.id:
+            if user.id == user_id:
                 user.is_active = True
                 return {"Message": "User activated"}
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")    
