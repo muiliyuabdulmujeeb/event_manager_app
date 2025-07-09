@@ -2,7 +2,7 @@ from fastapi import HTTPException, status
 import uuid
 from database import events
 from models import Event as EventModel
-from schemas.event import EventCreate, EventUpdate, EventOpen, EventClose
+from schemas.event import EventCreate, EventUpdate
 
 class EventLogic:
 
@@ -43,17 +43,17 @@ class EventLogic:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Event not found")
     
     @staticmethod
-    def close_event_registration(event_id: EventClose):
+    def close_event_registration(event_id: str):
         for event in events:
-            if event.id == event_id.id:
+            if event.id == event_id:
                 event.is_open = False
                 return {"Message": "Event registration closed"}
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Event not found")
 
     @staticmethod
-    def open_event_registration(event_id: EventOpen):
+    def open_event_registration(event_id: str):
         for event in events:
-            if event.id == event_id.id:
+            if event.id == event_id:
                 event.is_open = True
                 return {"Message": "Event registration opened"}
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Event not found")
