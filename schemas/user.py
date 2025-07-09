@@ -14,11 +14,5 @@ class UserCreate(BaseModel):
 class UserUpdate(UserCreate):
     id: str
 
-class UserActivate(BaseModel):
-    id: str
-
-class UserDeactivate(UserActivate):
-    pass
-
-class UserBase(UserCreate, UserDeactivate):  ## edit the parent class here to UserUpdate
+class UserBase(UserUpdate):
     pass    
