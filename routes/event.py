@@ -1,5 +1,5 @@
 from fastapi import APIRouter, status
-from schemas.event import EventCreate, EventUpdate, EventOpen, EventClose
+from schemas.event import EventCreate, EventUpdate
 from services.event import event_logic
 
 event_router = APIRouter()
@@ -24,10 +24,10 @@ def get_event_by_id(event_id: str):
 def delete_event(event_id: str):
     return event_logic.delete_event(event_id= event_id)
 
-@event_router.patch("/close")
-def close_event_registration(event_id: EventClose):
+@event_router.patch("/{event_id}/close")
+def close_event_registration(event_id: str):
     return event_logic.close_event_registration(event_id= event_id)
 
-@event_router.patch("/open")
-def open_event_registration(event_id: EventOpen):
+@event_router.patch("/{event_id}/open")
+def open_event_registration(event_id: str):
     return event_logic.open_event_registration(event_id= event_id)
