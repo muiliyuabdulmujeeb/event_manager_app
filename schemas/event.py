@@ -16,14 +16,7 @@ class EventCreate(BaseModel):
 class EventUpdate(EventCreate):
     id: str
 
-class EventOpen(BaseModel):
+class EventSpeaker(BaseModel):
     id: str
-
-class EventClose(EventOpen):
-    pass
-
-class EventDelete(EventOpen):
-    pass
-
-class EventBase(EventUpdate):
-    pass
+    event_id: str
+    speaker_id: str
