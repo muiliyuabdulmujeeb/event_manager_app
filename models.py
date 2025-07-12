@@ -1,4 +1,5 @@
 from typing import Optional
+from datetime import date
 
 class User:
     def __init__(self, id: str, name: str, email: str, is_active: bool = True):
@@ -31,10 +32,10 @@ class EventSpeaker:
         self.speaker_id = speaker_id
 
 class Registration:
-    def __init__(self, id: str, user_id: str, event_id: str, date: str, attended: bool = False):
+    def __init__(self, id: str, user_id: str, event_id: str, reg_date: date, attended: bool = False):
         self.id = id
         self.user_id = user_id
         self.event_id = event_id
-        self.date = date
+        self.reg_date = reg_date
         self.attended = attended
 
