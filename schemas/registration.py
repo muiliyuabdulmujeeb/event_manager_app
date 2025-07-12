@@ -11,7 +11,7 @@ from datetime import date
 class RegistrationCreate(BaseModel):
     user_id: str
     event_id: str
-    registration_date: date
+    reg_date: date
 
 class MarkAttendance(BaseModel):
     id: str
