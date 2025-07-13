@@ -32,9 +32,6 @@ A FastAPI-based system for managing events, user registrations, attendance, and 
 - Python 3.8+  
 - pip (Python package manager)  
 
-### Installation
-
-Certainly! Here's the properly formatted **Installation** section where the commands are inside the bash code block, and the explanatory instructions (in brackets) are placed as regular text outside the code block for clarity:
 
 ### Installation
 
@@ -45,21 +42,18 @@ git clone https://github.com/muiliyuabdulmujeeb/event_manager_app.git
 cd event_manager_app
 python -m venv venv
 ```
-*(Create a virtual environment called `venv`)*
 
 On **Windows**, activate the virtual environment with:
 
 ```bash
 venv\Scripts\activate
 ```
-*(Activate the virtual environment on Windows)*
 
 On **Linux or macOS**, activate the virtual environment with:
 
 ```bash
 source venv/bin/activate
 ```
-*(Activate the virtual environment on Linux or macOS)*
 
 Then, install the required packages:
 
