@@ -34,12 +34,36 @@ A FastAPI-based system for managing events, user registrations, attendance, and 
 
 ### Installation
 
+Certainly! Here's the properly formatted **Installation** section where the commands are inside the bash code block, and the explanatory instructions (in brackets) are placed as regular text outside the code block for clarity:
+
+### Installation
+
+Open your terminal, clone the repository and create a virtual environment (venv):
+
 ```bash
 git clone https://github.com/muiliyuabdulmujeeb/event_manager_app.git
 cd event_manager_app
-python -m venv venv (install a virtual environmant called venv)
-venv\Scripts\activate (activate venv on windows)
-source venv/bin/activate (activate venv on Linux or macos)
+python -m venv venv
+```
+*(Create a virtual environment called `venv`)*
+
+On **Windows**, activate the virtual environment with:
+
+```bash
+venv\Scripts\activate
+```
+*(Activate the virtual environment on Windows)*
+
+On **Linux or macOS**, activate the virtual environment with:
+
+```bash
+source venv/bin/activate
+```
+*(Activate the virtual environment on Linux or macOS)*
+
+Then, install the required packages:
+
+```bash
 pip install fastapi uvicorn
 pip install pydantic
 ```
